@@ -1,14 +1,39 @@
 module readmemh_tb();
-    reg [7:0] test_memory [0:15];
+    reg [31:0] test_memory [0:15];// 16 palabras de 32 bits
 	 
 	 integer index;
-    initial begin
+    
+	 
+	 
+	 logic   in_dut_clk;
+	 logic   in_dut_we;
+	 logic   [15:0] in_dut_adr;
+	 logic   [31:0] in_dut_din;
+	 logic   [31:0] out_dut_dout;
+	 
+	 
+	 
+	 ram dut(in_dut_clk,in_dut_we,in_dut_adr,in_dut_din,out_dut_dout);
+	 
+	 integer i;
+	 
+	 
+	 initial begin
+		  i = 0;
+		  in_dut_we = 1;
+	     in_dut_adr = 15'b0000_0000_0000_0000;
         $display("Loading rom.");
         $readmemh("test.txt", test_memory);
     end
 	 
-	 initial begin 
-		for (index= 0; index < 16; index++) $display("%d:%h",index,test_memory[index]);
-			
+	 
+	 
+	 always @(negedge in_dut_clk) begin 
+			in_dut_din = test_memory[i];
+			//incrementar index 
+			i = i +1;
+			//inclementar address
+			in_dut_adr = in_dut_adr + 1;
 	 end
+	 
 endmodule
