@@ -1,3 +1,6 @@
+// Este test inicializa un ram la cual carga los datos del archivo.
+
+
 module readmemh_tb();
     reg [31:0] test_memory [0:15];// 16 palabras de 32 bits
 	 
