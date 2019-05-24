@@ -7,6 +7,7 @@ module Program_Counter( input  logic clk,
 								input  logic reset,
 								input  logic [31:0] pc_prima, 
 								output logic [31:0] pc);
+	
 		
 		always @(negedge clk, posedge reset) begin 
 			if(reset) pc = 32'b0;
