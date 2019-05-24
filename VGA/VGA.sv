@@ -17,7 +17,7 @@ module VGA (input logic clk,
 	 
 	 	 //Set the color
 	 assign red = 8'b0000_0000;
-	 assign green = 8'b0000_1111;
+	 assign green = 8'b1111_1111;
 	 assign blue = 8'b0000_0000;
 	 
 	 
