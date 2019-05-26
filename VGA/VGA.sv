@@ -16,9 +16,51 @@ module VGA (input logic clk,
 	 VGA_CONTROLLER vga_controller( clk_out, reset, hsync_out, vsync_out, sync_b_out, blank_b_out, hcnt_out, vcnt_out);
 	 
 	 	 //Set the color
-	 assign red = 8'b0000_0000;
-	 assign green = 8'b1111_1111;
-	 assign blue = 8'b0000_0000;
+		 
+	 always @ *
+		if (0 <= vcnt_out & vcnt_out < 192 ) begin 
+		//DAE8FC
+			 red = 8'hDA;
+			 green = 8'hE8;
+			 blue = 8'hFC;
+		end
+		
+		else if ((vcnt_out == 192) | (vcnt_out >= 192 & hcnt_out == 0 )   | 
+											  (vcnt_out >= 192 & hcnt_out == 90 )  | 
+											  (vcnt_out >= 192 & hcnt_out == 180 ) | 
+											  (vcnt_out >= 192 & hcnt_out == 270 ) | 
+											  (vcnt_out >= 192 & hcnt_out == 360 ) | 
+											  (vcnt_out >= 192 & hcnt_out == 450 ) | 
+											  (vcnt_out >= 192 & hcnt_out == 540 ) | 
+											  (vcnt_out >= 192 & hcnt_out == 640 )) begin 
+			 red = 8'b0000_0000;
+			 green = 8'b0000_0000;
+			 blue = 8'b0000_0000;
+		
+		end
+		
+		else if ((vcnt_out >= 192) & (vcnt_out <= 400) & (  (  65 <= hcnt_out  & hcnt_out <= 115)  | 
+																			 (  155 <= hcnt_out  & hcnt_out <= 205) | 
+																			 (245 <= hcnt_out  & hcnt_out <= 295)   | 
+																			 (425 <= hcnt_out  & hcnt_out <= 475)   |  
+																			 (515 <= hcnt_out  & hcnt_out <= 565) )) begin 
+			 red = 8'b0000_0000;
+			 green = 8'b0000_0000;
+			 blue = 8'b0000_0000;
+		
+		end
+		
+		else begin 
+			 red = 8'b1111_1111;
+			 green = 8'b1111_1111;
+			 blue = 8'b1111_1111;
+		end
+	
+			
 	 
+	
+		
+
+	 	 
 	 
 endmodule
