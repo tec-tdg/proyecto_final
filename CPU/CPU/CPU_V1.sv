@@ -1,8 +1,10 @@
 //Este procesador interpreta un ADD y  un ADD con inmediato
 
-//Se recibe un PC y se vera si el procesador guardo en memoria los valos 
+//Se recibe un PC y se verá si el procesador guardó en memoria los valores
 //de los registros ya sumados por el ALU
-module CPU_V1(logic input [31:0] PC_test,logic input clk_test, reset_test,logic output [31:0] Memory_Stored);
+module CPU_V1( logic input [31:0] PC_test,
+					logic input clk_test, reset_test,
+					logic output [31:0] Memory_Stored);
 
 //Se  conecta la entrada PC_Test a un program counter
 
@@ -18,13 +20,13 @@ logic [31:0] PC_Test_Output;
 // module InstructionMemory (input logic [bus-1:0] address, input logic clk, reset, output logic [bus-1:0] data);
 
 //
-InstructionMemory INSTRUCTIONMEMORY(PC_Test_Output,clk_test,reset_test,);
+InstructionMemory INSTRUCTIONMEMORY(PC_Test_Output,clk_test,reset_test,Data_out_test);
 
 // Se crea la salida del Instruction Memory
 
 logic [31:0] Data_out_test;
 
-// Se pasara esa salida como entrada a la ALU
+// Se pasara esa salida  19:16 se pasará como entrada al register file
 
 
 //module ALU #(parameter N=1) (input [N-1:0] a_i, b_i,input [3:0] alucontrol, output [N-1:0] result,//To display 7-segmentsoutput [3:0] output_flags);
