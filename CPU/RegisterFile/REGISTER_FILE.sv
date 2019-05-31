@@ -5,17 +5,17 @@ module REGISTER_FILE#(parameter N = 4,parameter M = 32)
 				(  input logic   clk,
 					input logic   WE3,
 					
-					input logic   [N-1:0]  A1,
-					input logic   [N-1:0]  A2,
-					input logic   [N-1:0]  A3,
+					input reg   [N-1:0]  A1,
+					input reg   [N-1:0]  A2,
+					input reg   [N-1:0]  A3,
 					
 					input logic   [M-1:0]  WD3,
 					
 					input logic   [M-1:0]  R15,
 					
 					
-					output logic  [M-1:0] RD1,
-					output logic  [M-1:0] RD2);
+					output reg  [M-1:0] RD1,
+					output reg  [M-1:0] RD2);
 				
 		logic [M-1:0] mem [2**N-1:0];// 2**N palabras de M bits
 		
