@@ -23,6 +23,6 @@ module REGISTER_FILE#(parameter N = 4,parameter M = 32)
 			if (WE3) mem [A3] <= WD3; //Escritura habilitada de forma sincrónica
 			
 		assign RD1 = mem[A1];//La lectura simepre ocurre de forma inmediata
-		assign RD2 = men[A2];//La lectura simepre ocurre de forma inmediata
+		assign RD2 = mem[A2];//La lectura simepre ocurre de forma inmediata
 		
 endmodule
