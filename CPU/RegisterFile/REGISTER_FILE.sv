@@ -20,9 +20,13 @@ module REGISTER_FILE#(parameter N = 4,parameter M = 32)
 		logic [M-1:0] mem [2**N-1:0];// 2**N palabras de M bits
 		
 		always_ff @(posedge clk)
+		  
+		
 			if (WE3) mem [A3] <= WD3; //Escritura habilitada de forma sincrónica
 			
 		assign RD1 = mem[A1];//La lectura simepre ocurre de forma inmediata
 		assign RD2 = mem[A2];//La lectura simepre ocurre de forma inmediata
+		
+		  
 		
 endmodule
