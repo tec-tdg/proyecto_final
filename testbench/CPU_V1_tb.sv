@@ -19,6 +19,11 @@ module CPU_V1_tb();
 	initial begin 
 		assign pc_in = 4'b0;
 		assign reset_in = 0;
+		#30
+		assign reset_in = 1;
+		#30
+		assign reset_in = 0;
+		
 		
 		
 	end
