@@ -18,11 +18,12 @@ module CPU_V1_tb();
 				  
 	initial begin 
 		assign pc_in = 4'b0;
-		assign reset_in = 0;
-		
-		
-		
+		assign reset_in = 0;	
 	end
+	 always @(posedge clk_in) begin 
+			assign pc_in = pc_in + 4 ;
+			assign reset_in = 0;	
+	 end
 					 
   
 
