@@ -55,24 +55,26 @@ logic we3;
 assign we3 = 1;// Habilitar escritura
 
 
-////module REGISTER_FILE_STRUCTURAL(parameter N = 4,parameter M = 32)
-//				(  input logic   clk,
-//					input logic   WE3,
-//					
-//					input reg   [N-1:0]  A1,
-//					input reg   [N-1:0]  A2,
-//					input reg   [N-1:0]  A3,
-//					
-//					input logic   [M-1:0]  WD3,
-//					
-//					input logic   [M-1:0]  R15,
-//					
-//					
-//					output reg  [M-1:0] RD1,
-//					output reg  [M-1:0] RD2);
+/*module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
+				(  input logic   clk,reset,
+					input logic   WE3,
+					
+					input reg   [N-1:0]  A1,
+					input reg   [N-1:0]  A2,
+					input reg   [N-1:0]  A3,
+					
+					input logic   [M-1:0]  WD3,
+					
+					input logic   [M-1:0]  R15,
+					
+					
+					output reg  [M-1:0] RD1,
+					output reg  [M-1:0] RD2);
+*/
 
 REGISTER_FILE_STRUCTURAL rf_module( 
-					clk,            //input logic   clk,
+					clk,              //input logic   clk,
+					reset,            //reset of
 					we3,                      //input logic   WE3,
 					instruction[19:16],       //input logic   [N-1:0]  A1,
 					4'bzzzz,                  //input logic   [N-1:0]  A2,

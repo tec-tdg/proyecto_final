@@ -22,9 +22,10 @@ module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 
 //DECODER(input logic [3:0] address, output logic [15:0] outputdata);
 
+logic [15:0]decoder_output;
+
 DECODER decoder(A3,decoder_output);
 
-logic [15:0]decoder_output;
 
 
 //Se crean los enable de los registros		  
@@ -58,8 +59,16 @@ assign WER15= WE3 & decoder_output[15];
 
 //Se crean los RD de los registros		  
 		
-logic RDR0,RDR1,RDR2,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12,RDR13,RDR14,RDR15;
+logic [31:0] RDR0,RDR1,RDR2,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12,RDR13,RDR14,RDR15;
 
+/**
+ REGISTER #(parameter M = 32)
+				(  input logic   clk,reset,
+					input logic   WE,
+					input logic [M-1:0] DATA_IN,
+					output reg  [M-1:0] RD
+					);
+**/
  REGISTER R0(clk,reset,WER0,WD3,RDR0);
  REGISTER R1(clk,reset,WER1,WD3,RDR1);
  REGISTER R2(clk,reset,WER2,WD3,RDR2);
