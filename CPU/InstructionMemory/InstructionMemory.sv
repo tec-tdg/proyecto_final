@@ -8,8 +8,8 @@ module InstructionMemory #(parameter bus=32, parameter memorySize = 1024*4, para
 	end
 	
 	always @(negedge clk) begin 
-		//data <= memory_array[{2'b00,address[bus-1:2]}]; 
-		data <= memory_array[address]; // para propósitos de prueba
+		data <= memory_array[{2'b00,address[bus-1:2]}]; 
+		//data <= memory_array[address]; // para propósitos de prueba
 	end
 	
 endmodule

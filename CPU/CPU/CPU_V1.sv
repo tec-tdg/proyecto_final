@@ -5,13 +5,13 @@
 module CPU_V1(  input logic  [31:0] pc,
 					 input logic clk, reset,
 					 output logic [31:0] output_cpu,
-					 output logic [31:0] instruction);
+					 output logic [31:0] instruction,PC_Out);
 
 //Se  conecta la entrada PC a un program counter
 
 //Program_Counter (clk_input, reset_input,pc_prima_input,pc_output);
 
-logic [31:0] PC_Out;
+
 Program_Counter  pc_module(clk,reset,pc,PC_Out);
 
 //Se crea el output del Program_Counter y se conecta a la siguiente etapa 
