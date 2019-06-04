@@ -4,7 +4,8 @@
 //de los registros ya sumados por el ALU
 module CPU_V1(  input logic  [31:0] pc,
 					 input logic clk, reset,
-					 output logic [31:0] output_cpu);
+					 output logic [31:0] output_cpu,
+					 output logic [31:0] instruction);
 
 //Se  conecta la entrada PC a un program counter
 
@@ -22,7 +23,7 @@ Program_Counter  pc_module(clk,reset,pc,PC_Out);
 
 // Se crea la salida del Instruction Memory
 
-logic [31:0] instruction;
+//logic [31:0] instruction;
 
 InstructionMemory im_module(PC_Out,clk,reset,instruction);
 
