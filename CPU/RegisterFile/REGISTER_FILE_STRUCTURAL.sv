@@ -30,7 +30,7 @@ DECODER decoder(A3,decoder_output);
 
 //Se crean los enable de los registros		  
 		
-logic WER0,WER1,WER2,WER4,WER5,WER6,WER7,WER8,WER9,WER10,WER11,WER12,WER13,WER14,WER15;		
+logic WER0,WER1,WER2,WER3,WER4,WER5,WER6,WER7,WER8,WER9,WER10,WER11,WER12,WER13,WER14,WER15;		
 		
 //Se asignan los Wright enable
 
@@ -59,7 +59,7 @@ assign WER15= WE3 & decoder_output[15];
 
 //Se crean los RD de los registros		  
 		
-logic [31:0] RDR0,RDR1,RDR2,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12,RDR13,RDR14,RDR15;
+logic [31:0] RDR0,RDR1,RDR2,RDR3,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12,RDR13,RDR14,RDR15;
 
 /**
  REGISTER #(parameter M = 32)
@@ -84,7 +84,7 @@ logic [31:0] RDR0,RDR1,RDR2,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12,RDR1
  REGISTER R12(clk,reset,WER12,WD3,RDR12);
  REGISTER R13(clk,reset,WER13,WD3,RDR13);
  REGISTER R14(clk,reset,WER14,WD3,RDR14);
- REGISTER Registro15(clk,WER15,R15,RDR15);
+ REGISTER Registro15(clk,reset,WER15,R15,RDR15);
 
 //Se instancian los 2 muxes para RD1 Y RD2
 //module MUX #(parameter N=1) (

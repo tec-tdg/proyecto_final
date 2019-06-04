@@ -27,8 +27,8 @@ logic [31:0] instruction;
 InstructionMemory im_module(PC_Out,clk,reset,instruction);
 
 
-/*
-REGISTER_FILE#(parameter N = 4,parameter M = 32)
+
+/*REGISTER_FILE#(parameter N = 4,parameter M = 32)
 				(  input logic   clk,
 					input logic   WE3,
 					
@@ -42,17 +42,18 @@ REGISTER_FILE#(parameter N = 4,parameter M = 32)
 					
 					
 					output reg  [M-1:0] RD1,
-					output reg  [M-1:0] RD2);
-*/
+					output reg  [M-1:0] RD2);*/
+
 
 
 logic [31:0] read_data_WD3; // dato que se lee 					
 //logic [31:0] rd1_SrcA; // salida del RD1
+
 logic [31:0] r15;
 
 logic [31:0] rd2_writeData; //salida RD2
 logic we3;
-assign we3 = 1;// Habilitar escritura
+assign we3 = 0;// Habilitar escritura
 
 
 /*module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
@@ -86,7 +87,6 @@ REGISTER_FILE_STRUCTURAL rf_module(
 					rd2_writeData);			  //output logic  [M-1:0]  RD2
 					
 					           // páginas 393
-
 
 
 
