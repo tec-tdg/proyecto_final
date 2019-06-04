@@ -4,7 +4,8 @@
 //de los registros ya sumados por el ALU
 module CPU_V1(  input logic  [31:0] pc,
 					 input logic clk, reset,
-					 output logic [31:0] output_cpu);
+					 output logic [31:0] output_cpu,
+					 output logic [31:0] instruction);
 
 //Se  conecta la entrada PC a un program counter
 
@@ -22,14 +23,42 @@ Program_Counter  pc_module(clk,reset,pc,PC_Out);
 
 // Se crea la salida del Instruction Memory
 
-logic [31:0] instruction;
+//logic [31:0] instruction;
 
 InstructionMemory im_module(PC_Out,clk,reset,instruction);
 
 
-/*
-REGISTER_FILE#(parameter N = 4,parameter M = 32)
+
+/*REGISTER_FILE#(parameter N = 4,parameter M = 32)
 				(  input logic   clk,
+					input logic   WE3,
+					
+					input reg   [N-1:0]  A1,
+					input reg   [N-1:0]  A2,
+					input reg   [N-1:0]  A3,
+					
+					input logic   [M-1:0]  WD3,
+					
+					input logic   [M-1:0]  R15,
+					
+					
+					output reg  [M-1:0] RD1,
+					output reg  [M-1:0] RD2);*/
+
+
+
+logic [31:0] read_data_WD3; // dato que se lee 					
+//logic [31:0] rd1_SrcA; // salida del RD1
+
+logic [31:0] r15;
+
+logic [31:0] rd2_writeData; //salida RD2
+logic we3;
+assign we3 = 0;// Habilitar escritura
+
+
+/*module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
+				(  input logic   clk,reset,
 					input logic   WE3,
 					
 					input reg   [N-1:0]  A1,
@@ -45,34 +74,9 @@ REGISTER_FILE#(parameter N = 4,parameter M = 32)
 					output reg  [M-1:0] RD2);
 */
 
-
-logic [31:0] read_data_WD3; // dato que se lee 					
-//logic [31:0] rd1_SrcA; // salida del RD1
-logic [31:0] r15;
-
-logic [31:0] rd2_writeData; //salida RD2
-logic we3;
-assign we3 = 1;// Habilitar escritura
-
-
-////module REGISTER_FILE_STRUCTURAL(parameter N = 4,parameter M = 32)
-//				(  input logic   clk,
-//					input logic   WE3,
-//					
-//					input reg   [N-1:0]  A1,
-//					input reg   [N-1:0]  A2,
-//					input reg   [N-1:0]  A3,
-//					
-//					input logic   [M-1:0]  WD3,
-//					
-//					input logic   [M-1:0]  R15,
-//					
-//					
-//					output reg  [M-1:0] RD1,
-//					output reg  [M-1:0] RD2);
-
 REGISTER_FILE_STRUCTURAL rf_module( 
-					clk,            //input logic   clk,
+					clk,              //input logic   clk,
+					reset,            //reset of
 					we3,                      //input logic   WE3,
 					instruction[19:16],       //input logic   [N-1:0]  A1,
 					4'bzzzz,                  //input logic   [N-1:0]  A2,
@@ -84,7 +88,6 @@ REGISTER_FILE_STRUCTURAL rf_module(
 					rd2_writeData);			  //output logic  [M-1:0]  RD2
 					
 					           // páginas 393
-
 
 
 
