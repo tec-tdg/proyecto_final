@@ -1,21 +1,22 @@
 module REGISTER_FILE_STRUCTURAL_tb();
 	
+	
 	/*
-	 REGISTER_FILE#(parameter N = 4,parameter M = 32)
-				(  input logic   clk,
+	module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
+				(  input logic   clk,reset,
 					input logic   WE3,
 					
-					input reg   [N-1:0]  A1,
-					input reg   [N-1:0]  A2,
-					input reg   [N-1:0]  A3,
+					input logic   [N-1:0]  A1,
+					input logic   [N-1:0]  A2,
+					input logic   [N-1:0]  A3,
 					
 					input logic   [M-1:0]  WD3,
 					
 					input logic   [M-1:0]  R15,
 					
 					
-					output reg  [M-1:0] RD1,
-					output reg  [M-1:0] RD2);
+					output logic  [M-1:0] RD1,
+					output logic  [M-1:0] RD2);
 	*/
 	logic   clk_in;
 	logic   WE3_in;
@@ -33,16 +34,19 @@ module REGISTER_FILE_STRUCTURAL_tb();
 	logic  [31:0] RD1_out;
 	logic  [31:0] RD2_out;
 	
+	//logic [31:0] RDR0;
+	//logic WER0;
 	
-	REGISTER_FILE_STRUCTURAL dut(clk_in,WE3_in,reset,A1_in,A2_in,A3_in,WD3_in,R15_in,RD1_out,RD2_out);
+	
+	REGISTER_FILE_STRUCTURAL dut(clk_in,reset,WE3_in,A1_in,A2_in,A3_in,WD3_in,R15_in,RD1_out,RD2_out);
 	
 	initial begin
 		assign WE3_in = 0;
 		assign reset = 0;
 		assign A1_in = 4'b0000;
-		assign A2_in = 4'b0000;
+		assign A2_in = 4'b0001;
 		assign A3_in = 4'b0000;
-		assign WD3_in = 32'b0;
+		assign WD3_in = 32'b0000_1111_0000_1111_0000_1111_0000_1111;
 		assign R15_in = 32'b0;
 //		#5;
 //		assign WE3_in =1;
@@ -94,11 +98,16 @@ module REGISTER_FILE_STRUCTURAL_tb();
 //		#5
 //		assign A3_in = 4'b1110;
 //		assign WD3_in = 32'b0000_0000_0000_0000_0000_0000_0000_1111;
-		
+		#20
 		assign reset = 1;
 		#200
-		assign reset =0;
-	
+		assign reset = 0;
+		
+		#200
+		assign WE3_in = 1;
+		#200
+		assign WE3_in = 0;
+		
 		
 		
 	
@@ -109,6 +118,7 @@ module REGISTER_FILE_STRUCTURAL_tb();
 			assign A1_in = A1_in + 4'b0001;
 			assign A2_in = A2_in + 4'b0001;
 	 end
-
-
+	
+	
+	
 endmodule

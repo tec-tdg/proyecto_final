@@ -48,7 +48,7 @@ InstructionMemory im_module(PC_Out,clk,reset,instruction);
 
 
 logic [31:0] read_data_WD3; // dato que se lee 					
-//logic [31:0] rd1_SrcA; // salida del RD1
+logic [31:0] rd1_SrcA; // salida del RD1
 
 logic [31:0] r15;
 
@@ -84,7 +84,7 @@ REGISTER_FILE_STRUCTURAL rf_module(
 					
 					read_data_WD3,            //write data 3
 					r15,							  //input logic   [M-1:0]  R15, página 395,
-					output_cpu,					  //output logic  [M-1:0]  RD1,
+					rd1_SrcA,					  //output logic  [M-1:0]  RD1,
 					rd2_writeData);			  //output logic  [M-1:0]  RD2
 					
 					           // páginas 393
@@ -92,14 +92,14 @@ REGISTER_FILE_STRUCTURAL rf_module(
 
 
 //
-//logic [3:0] alu_control;
+logic [3:0] alu_control;
 //
-//assign alu_control = 4'b0000;
+assign alu_control = 4'b0000;
 //
 ////Se instancia la logica de salida y de flags
 //
-//logic[31:0] alu_result;
-//logic[3:0] Alu_flags;
+logic[31:0] alu_result;
+logic[3:0] Alu_flags;
 ///*
 //module ALU #(parameter N=1) (
 //	input [N-1:0] a_i, b_i,
@@ -107,12 +107,12 @@ REGISTER_FILE_STRUCTURAL rf_module(
 //	output [N-1:0] result,//To display 7-segments
 //	output [3:0] output_flags);
 //**/
-//ALU#32 alu_module(  
-//			rd1_SrcA,
-//			32'b0,
-//			alu_control,
-//			output_cpu, // por ahora vamos asignar este data para pruebas
-//			Alu_flags);
+ALU#32 alu_module(  
+			rd1_SrcA,
+			32'b0,
+			alu_control,
+			output_cpu, // por ahora vamos asignar este data para pruebas
+			Alu_flags);
 
 			
 			

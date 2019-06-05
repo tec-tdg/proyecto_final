@@ -22,36 +22,37 @@ module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 
 //DECODER(input logic [3:0] address, output logic [15:0] outputdata);
 
-logic [15:0]decoder_output;
-
-DECODER decoder(A3,decoder_output);
+//logic [15:0]decoder_output;
+//
+//DECODER decoder(A3,decoder_output);
 
 
 
 //Se crean los enable de los registros		  
 		
-logic WER0,WER1,WER2,WER3,WER4,WER5,WER6,WER7,WER8,WER9,WER10,WER11,WER12,WER13,WER14,WER15;		
+logic WER1 ,WER2 ,WER3 ,WER4 ,WER5 ,WER6 ,WER7,WER8 ,
+		WER9 ,WER10 ,WER11 ,WER12 ,WER13,WER14 ,WER15 ;		
 		
-//Se asignan los Wright enable
+//Se asignan los Wright enable 
+assign WER0  = WE3 & (A3 == 4'b0000);
+assign WER1  = WE3 & (A3 == 4'b0001);
+assign WER2  = WE3 & (A3 == 4'b0010);  
+assign WER3  = WE3 & (A3 == 4'b0011);
+assign WER4  = WE3 & (A3 == 4'b0100);  
+assign WER5  = WE3 & (A3 == 4'b0101);
+assign WER6  = WE3 & (A3 == 4'b0110);  
+assign WER7  = WE3 & (A3 == 4'b0111);
+assign WER8  = WE3 & (A3 == 4'b1000); 
+assign WER9  = WE3 & (A3 == 4'b1001);
+assign WER10 = WE3 & (A3 == 4'b1010);  
+assign WER11 = WE3 & (A3 == 4'b1011);
+assign WER12 = WE3 & (A3 == 4'b1100);  
+assign WER13 = WE3 & (A3 == 4'b1101);
+assign WER14 = WE3 & (A3 == 4'b1110);  
 
-assign WER0= WE3 & decoder_output[0];
-assign WER1= WE3 & decoder_output[1];  
-assign WER2= WE3 & decoder_output[2];
-assign WER3= WE3 & decoder_output[3];  
-assign WER4= WE3 & decoder_output[4];
-assign WER5= WE3 & decoder_output[5];  
-assign WER6= WE3 & decoder_output[6];
-assign WER7= WE3 & decoder_output[7]; 
-assign WER8= WE3 & decoder_output[8];
-assign WER9= WE3 & decoder_output[9];  
-assign WER10= WE3 & decoder_output[10];
-assign WER11= WE3 & decoder_output[11];  
-assign WER12= WE3 & decoder_output[12];
-assign WER13= WE3 & decoder_output[13];  
-assign WER14= WE3 & decoder_output[14];
 
 //Verificar escritura de R15 en cada ciclo
-assign WER15= WE3 & decoder_output[15];   
+assign WER15= WE3 & (A3 == 4'b1111);   
 
 //Se instancian los registros
 //module REGISTER(parameter M = 32)(  input logic   clk,input logic   WE,
@@ -86,13 +87,16 @@ logic [31:0] RDR0,RDR1,RDR2,RDR3,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12
  REGISTER R13(clk,reset,WER13,WD3,RDR13);
  REGISTER R14(clk,reset,WER14,WD3,RDR14);
  REGISTER Registro15(clk,reset,WER15,R15,RDR15);
+ 
+ 	
+
 
 //Se instancian los 2 muxes para RD1 Y RD2
 //module MUX #(parameter N=1) (
 //	input [N-1:0] a, b, c, d, e, f,g, h,i, j,k, l, m, n, o, p, 
 //	input [3:0] selection_i, 
 //	output [N-1:0] result);
- MUX  multiplexer_rd1(RDR0,RDR1,RDR2,RDR3,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12,RDR13,RDR14,RDR15, 
+MUX  multiplexer_rd1(RDR0,RDR1,RDR2,RDR3,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12,RDR13,RDR14,RDR15, 
 								A1, 
 								RD1);
 								

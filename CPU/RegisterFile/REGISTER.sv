@@ -5,16 +5,17 @@ module REGISTER #(parameter M = 32)
 				(  input logic   clk,reset,
 					input logic   WE,
 					input logic [M-1:0] DATA_IN,
-					output reg  [M-1:0] RD
+					output logic  [M-1:0] RD
 					);
 				
-		logic [M-1:0] mem;
+		logic [M-1:0] mem= 32'b0;
 		
 		always_ff @(posedge clk,posedge reset)
 		begin
 		  
 		   if (reset) mem <= 32'b0;
-			else if (WE) mem  <= DATA_IN; //Escritura habilitada de forma sincrónica	
+			else if (WE) mem  <= DATA_IN; //Escritura habilitada de forma sincrónica
+
 			
 		 end
 		 
