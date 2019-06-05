@@ -44,7 +44,7 @@ module REGISTER_FILE_STRUCTURAL_tb();
 		assign WE3_in = 0;
 		assign reset = 0;
 		assign A1_in = 4'b0000;
-		assign A2_in = 4'b0001;
+		assign A2_in = 4'b0000;
 		assign A3_in = 4'b0000;
 		assign WD3_in = 32'b0000_1111_0000_1111_0000_1111_0000_1111;
 		assign R15_in = 32'b0;

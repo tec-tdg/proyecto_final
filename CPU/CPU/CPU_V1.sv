@@ -114,9 +114,4 @@ ALU#32 alu_module(
 			output_cpu, // por ahora vamos asignar este data para pruebas
 			Alu_flags);
 
-			
-			
-			
-
-
 endmodule
