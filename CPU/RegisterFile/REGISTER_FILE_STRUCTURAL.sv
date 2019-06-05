@@ -5,17 +5,17 @@ module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 				(  input logic   clk,reset,
 					input logic   WE3,
 					
-					input reg   [N-1:0]  A1,
-					input reg   [N-1:0]  A2,
-					input reg   [N-1:0]  A3,
+					input logic   [N-1:0]  A1,
+					input logic   [N-1:0]  A2,
+					input logic   [N-1:0]  A3,
 					
 					input logic   [M-1:0]  WD3,
 					
 					input logic   [M-1:0]  R15,
 					
 					
-					output reg  [M-1:0] RD1,
-					output reg  [M-1:0] RD2);
+					output logic  [M-1:0] RD1,
+					output logic  [M-1:0] RD2);
 
 
 // Se instancia el DECODER
@@ -69,6 +69,7 @@ logic [31:0] RDR0,RDR1,RDR2,RDR3,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12
 					output reg  [M-1:0] RD
 					);
 **/
+	
  REGISTER R0(clk,reset,WER0,WD3,RDR0);
  REGISTER R1(clk,reset,WER1,WD3,RDR1);
  REGISTER R2(clk,reset,WER2,WD3,RDR2);

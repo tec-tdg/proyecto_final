@@ -10,14 +10,12 @@ module REGISTER #(parameter M = 32)
 				
 		logic [M-1:0] mem;
 		
-		always_ff @(posedge clk)
+		always_ff @(posedge clk,posedge reset)
 		begin
 		  
 		   if (reset) mem <= 32'b0;
-			if (WE) mem  <= DATA_IN; //Escritura habilitada de forma sincrónica
+			else if (WE) mem  <= DATA_IN; //Escritura habilitada de forma sincrónica	
 			
-
-		
 		 end
 		 
 		 	assign RD = mem;//La lectura simepre ocurre de forma inmediata

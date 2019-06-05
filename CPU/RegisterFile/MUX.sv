@@ -23,7 +23,7 @@ module MUX #(parameter N=32) (
 		4'b1110:   y_o = o ;
 		4'b1111:   y_o = p ;
 		
-		default: y_o = 0;
+		default: y_o = 32'bz;
 	endcase
 	
 	assign result = y_o;
