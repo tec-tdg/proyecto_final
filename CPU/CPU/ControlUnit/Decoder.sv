@@ -8,7 +8,7 @@ module Decoder (input logic [3:0] Rd,
 					 output logic [1:0] FlagW,
 					 output logic [1:0] ImmSrc,
 					 output logic [1:0] RegSrc,
-					 output logic MemtoReg, ALUSrc,
+					 output logic MemtoReg, ALUSrc);
 	
 	logic [9:0] controls;
 	logic Branch, ALUOp;
