@@ -2,7 +2,7 @@
 //que posteriormente vendran de la unidad de control
 
 
-module CPU_V2(  input logic clk, reset,
+module DATAPATH(  input logic clk, reset,
 					 input logic [1:0] RegSrc,
 					 input logic RegWrite,
 					 input logic [1:0] ImmSrc,
