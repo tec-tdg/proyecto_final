@@ -1,4 +1,4 @@
-module MUX_4 #(parameter N=4) (
+module MUX_2 #(parameter N=4) (
 	input [N-1:0] a, b, 
 	input  selection_i, 
 	output [N-1:0] result);
