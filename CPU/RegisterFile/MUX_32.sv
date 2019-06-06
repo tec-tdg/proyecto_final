@@ -1,4 +1,4 @@
-module MUX_4 #(parameter N=4) (
+module MUX_32 #(parameter N=32) (
 	input [N-1:0] a, b, 
 	input  selection_i, 
 	output [N-1:0] result);
@@ -10,7 +10,7 @@ module MUX_4 #(parameter N=4) (
 		1'b1:   y_o = b ;
 		
 		
-		default: y_o = 4'bz;
+		default: y_o = 32'bz;
 	endcase
 	
 	assign result = y_o;
