@@ -1,16 +1,12 @@
-//Tomado del libro HDL Example 5.6 RAM
-module ram#(parameter N = 6,parameter M = 32)
-				(  input logic   clk,
-					input logic   we,
-					input logic   [N-1:0] adr,
-					input logic   [M-1:0] din,
-					output logic  [M-1:0] dout);
+//Tomado del libro HDL Example 7.14
+module ram#(parameter M = 32)
+				(  input logic   clk, we,
+					input logic   [M-1:0] a,wd,
+					output logic  [M-1:0] rd);
 				
-		logic [M-1:0] mem [2**N-1:0];// 2**N palabras de M bits
-		
-		always_ff @(posedge clk)
-			if (we) mem [adr] <= din; //Escritura habilitada de forma sincrónica
+		logic [M-1:0] RAM[2*M-1:0];
+		assign rd = RAM[a[31:2]]; // word aligned
 			
-		assign dout = mem[adr];//La lectura simepre ocurre de forma inmediata-
-		
+		always_ff @(posedge clk)
+			if (we) RAM[a[31:2]] <= wd;
 endmodule
