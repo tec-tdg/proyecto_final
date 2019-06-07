@@ -1,6 +1,9 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+////////////////////////////////////////////////////// 
+//Referencia de código utilizado:
+//////////////////////////////////////////////////////
+//Company: 
 // Engineer: Montvydas Klumbys	
 // 
 // Create Date:    
@@ -41,19 +44,20 @@ module Keyboard_PS2(
 	logic [7:0] H = 8'h33;
 
 
-	logic read;				//this is 1 if still waits to receive more bits 
+	logic read, resetFlag;								//this is 1 if still waits to receive more bits 
 	logic [11:0] count_reading;		//this is used to detect how much time passed since it received the previous codeword
-	logic PREVIOUS_STATE;			//used to check the previous state of the keyboard clock signal to know if it changed
-	logic scan_err;				//this becomes one if an error was received somewhere in the packet
-	logic [10:0] scan_code;			//this stores 11 received bits
-	logic [7:0] CODEWORD;			//this stores only the DATA codeword
-	logic TRIG_ARR;				//this is triggered when full 11 bits are received
-	logic [3:0]COUNT;				//tells how many bits were received until now (from 0 to 11)
-	logic TRIGGER = 0;			//This acts as a 250 times slower than the board clock. 
+	logic PREVIOUS_STATE;				//used to check the previous state of the keyboard clock signal to know if it changed
+	logic scan_err;						//this becomes one if an error was received somewhere in the packet
+	logic [10:0] scan_code;				//this stores 11 received bits
+	logic [7:0] CODEWORD;				//this stores only the DATA codeword
+	logic TRIG_ARR;						//this is triggered when full 11 bits are received
+	logic [3:0]COUNT;						//tells how many bits were received until now (from 0 to 11)
+	logic TRIGGER = 0;					//This acts as a 250 times slower than the board clock. 
 	logic [7:0]DOWNCOUNTER = 0;		//This is used together with TRIGGER - look the code
 
 	//Set initial values
 	initial begin
+		resetFlag = 0;
 		PREVIOUS_STATE = 1;		
 		scan_err = 0;		
 		scan_code = 0;
@@ -112,6 +116,7 @@ module Keyboard_PS2(
 			if (COUNT < 11 && count_reading >= 4000) begin	//and if after a certain time no more bits were received, then
 				COUNT <= 0;				//reset the number of bits received
 				read <= 0;				//and wait for the next packet
+				resetFlag <= 1;
 			end
 		end
 	PREVIOUS_STATE <= PS2_CLK;					//mark down the previous state of the keyboard clock
@@ -135,32 +140,36 @@ module Keyboard_PS2(
 	end
 	
 	always @(posedge CLK) begin
-		if (CODEWORD == Q)			
-			LED <= 8'b11111111;
-		else if (CODEWORD == A)			
-			LED <= 8'b00000001;
-		else if (CODEWORD == W)			
-			LED <= 8'b00000010;
-		else if (CODEWORD == S)			
-			LED <= 8'b00000011;
-		else if (CODEWORD == E)			
-			LED <= 8'b00000100;
-		else if (CODEWORD == D)			
-			LED <= 8'b00000101;
-		else if (CODEWORD == R)			
-			LED <= 8'b00000110;
-		else if (CODEWORD == F)			
-			LED <= 8'b00001000;
-		else if (CODEWORD == T)			
-			LED <= 8'b00001001;
-		else if (CODEWORD == G)			
-			LED <= 8'b00001010;
-		else if (CODEWORD == Y)			
-			LED <= 8'b00001011;
-		else if (CODEWORD == H)			
-			LED <= 8'b00001110;	
-		//else if (CODEWORD!=Q||CODEWORD!=A||CODEWORD!=W||CODEWORD!=S||CODEWORD!=E||CODEWORD!=D||CODEWORD!=R||CODEWORD!=F||CODEWORD!=T||CODEWORD!=G||CODEWORD!=Y||CODEWORD!=H)
-			//LED <= 8'b00000000;
+		if(resetFlag)
+			LED <= 8'b00000000;
+		else begin
+			if (CODEWORD == Q)			
+				LED <= 8'b11111111;
+			else if (CODEWORD == A)			
+				LED <= 8'b00000001;
+			else if (CODEWORD == W)			
+				LED <= 8'b00000010;
+			else if (CODEWORD == S)			
+				LED <= 8'b00000011;
+			else if (CODEWORD == E)			
+				LED <= 8'b00000100;
+			else if (CODEWORD == D)			
+				LED <= 8'b00000101;
+			else if (CODEWORD == R)			
+				LED <= 8'b00000110;
+			else if (CODEWORD == F)			
+				LED <= 8'b00001000;
+			else if (CODEWORD == T)			
+				LED <= 8'b00001001;
+			else if (CODEWORD == G)			
+				LED <= 8'b00001010;
+			else if (CODEWORD == Y)			
+				LED <= 8'b00001011;
+			else if (CODEWORD == H)			
+				LED <= 8'b00001110;	
+			//else if (CODEWORD!=Q||CODEWORD!=A||CODEWORD!=W||CODEWORD!=S||CODEWORD!=E||CODEWORD!=D||CODEWORD!=R||CODEWORD!=F||CODEWORD!=T||CODEWORD!=G||CODEWORD!=Y||CODEWORD!=H)
+				//LED <= 8'b00000000;
+		end
 	end
 endmodule
 
