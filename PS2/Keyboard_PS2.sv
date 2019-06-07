@@ -134,41 +134,34 @@ module Keyboard_PS2(
 		else CODEWORD <= 8'd0;					//no clock trigger, no data…
 	end
 	
-	//always @(posedge CLK) begin
-	always @ *
+	always @(posedge CLK) begin
 		if (CODEWORD == Q)			
-			LED = 8'b11111111;
+			LED <= 8'b11111111;
 		else if (CODEWORD == A)			
-			LED = 8'b00000001;
+			LED <= 8'b00000001;
 		else if (CODEWORD == W)			
-			LED = 8'b00000010;
+			LED <= 8'b00000010;
 		else if (CODEWORD == S)			
-			LED = 8'b00000011;
+			LED <= 8'b00000011;
 		else if (CODEWORD == E)			
-			LED = 8'b00000100;
+			LED <= 8'b00000100;
 		else if (CODEWORD == D)			
-			LED = 8'b00000101;
+			LED <= 8'b00000101;
 		else if (CODEWORD == R)			
-			LED = 8'b00000110;
+			LED <= 8'b00000110;
 		else if (CODEWORD == F)			
-			LED = 8'b00001000;
+			LED <= 8'b00001000;
 		else if (CODEWORD == T)			
-			LED = 8'b00001001;
+			LED <= 8'b00001001;
 		else if (CODEWORD == G)			
-			LED = 8'b00001010;
+			LED <= 8'b00001010;
 		else if (CODEWORD == Y)			
-			LED = 8'b00001011;
+			LED <= 8'b00001011;
 		else if (CODEWORD == H)			
-			LED = 8'b00001110;	
-		else //if (CODEWORD!=Q||CODEWORD!=A||CODEWORD!=W||CODEWORD!=S||CODEWORD!=E||CODEWORD!=D||CODEWORD!=R||CODEWORD!=F||CODEWORD!=T||CODEWORD!=G||CODEWORD!=Y||CODEWORD!=H)
-			LED <= 8'b00000000;
-//	end
-	
-//	always @(negedge CLK) begin
-//		LED <= 8'b00000000;
-//		CODEWORD <= X;
-//	end
-
+			LED <= 8'b00001110;	
+		//else if (CODEWORD!=Q||CODEWORD!=A||CODEWORD!=W||CODEWORD!=S||CODEWORD!=E||CODEWORD!=D||CODEWORD!=R||CODEWORD!=F||CODEWORD!=T||CODEWORD!=G||CODEWORD!=Y||CODEWORD!=H)
+			//LED <= 8'b00000000;
+	end
 endmodule
 
 
