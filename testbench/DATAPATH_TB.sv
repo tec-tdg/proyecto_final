@@ -29,12 +29,12 @@ logic [3:0] ALUFlags_t;
 logic [31:0] PC_t;
 logic [31:0] Instr_t;
 logic [31:0] ALUResult_t, WriteData_t;
-logic [31:0] ReadData_t;		
+logic [31:0] ReadData_t, SrcA, SrcB;		
 						
   
   DATAPATH dut( clk_t, reset_t,RegSrc_t,RegWrite_t,
  ImmSrc_t,ALUSrc_t, ALUControl_t, MemtoReg_t,PCSrc_t,
-  ALUFlags_t, PC_t, Instr_t,ALUResult_t, WriteData_t,
+  ALUFlags_t, PC_t, Instr_t,ALUResult_t, WriteData_t, SrcA, SrcB,
 ReadData_t);
 				  
 	initial begin 
