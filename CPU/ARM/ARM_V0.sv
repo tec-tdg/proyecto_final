@@ -15,18 +15,34 @@ module ARM_V0(input logic clk, reset,
 			  logic RegWrite, ALUSrc, MemtoReg, PCSrc;
 			  logic [1:0] RegSrc, ImmSrc, ALUControl;
 			  
-			  //se queman las señales estas las deberia dar la unidad de control
-			  //para que se haga un ORR 
+			  //Se inicializa la unidad de control
 			  
 	
-			  assign PCSrc = 1'b0;
-			  assign MemtoReg = 1'b0;
-			  assign MemWrite = 1'b0;
-			  assign ALUControl = 2'b11;
-			  assign ALUSrc = 1'b0;
-			  assign ImmSrc = 2'b00;
-			  assign RegWrite = 1'b0;
-			  assign RegSrc = 2'b00;
+			 // assign PCSrc = 1'b0;
+			 // assign MemtoReg = 1'b0;
+			 // assign MemWrite = 1'b0;
+			 // assign ALUControl = 2'b11;
+			 // assign ALUSrc = 1'b0;
+			 // assign ImmSrc = 2'b00;
+			 // assign RegWrite = 1'b0;
+			 // assign RegSrc = 2'b00;
+			 /*ControlUnit (input logic clk, reset,
+						  input logic [31:12] Instr,
+						  input logic [3:0] ALUFlags,
+						  output logic PCSrc, 
+						  output logic MemtoReg, 
+						  output logic MemWrite,
+						  output logic [1:0] ALUControl,
+						  output logic ALUSrc,
+						  output logic [1:0] ImmSrc,
+						  output logic RegWrite,
+						  output logic [1:0] RegSrc);*/
+			 
+			 
+			  ControlUnit c(clk,reset,Instr[31:12],ALUFlags,
+			  RegSrc,RegWrite,ImmSrc,ALUSrc,ALUControl,
+			  MemWrite,MemtoReg,PCScr);
+			  
 			  
 			  /*
 			  Se instancia el Datapath

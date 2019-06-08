@@ -18,7 +18,7 @@ module Condlogic(input logic clk, reset,
 	FlipFlopen #(2)flagflop20(clk, reset, FlagWrite[0], ALUFlags[1:0], Flags[1:0]);
 
 	// write controls are conditional
-	condcheck cc(Cond, Flags, CondEx);
+	Condcheck cc(Cond, Flags, CondEx);
 	
 	// Logic gates assigment
 	assign FlagWrite = FlagW & {2{CondEx}};
