@@ -13,17 +13,16 @@ module DATAPATH(  input logic clk, reset,
 					 output logic [3:0] ALUFlags,
 					 output logic [31:0] PC,
 					 input logic [31:0] Instr,
-					 output logic [31:0] ALUResult, WriteData, SrcA, SrcB,ExtImm,
-					 input logic [31:0] ReadData,	
-					 output logic [3:0]RA1,RA2
+					 output logic [31:0] ALUResult, WriteData,
+					 input logic [31:0] ReadData
+					 
 						
 				);
 
 
 logic [31:0] PCNext, PCPlus4, PCPlus8;
-logic [31:0] Result;
-//ExtImm, 
-//logic [3:0] RA1, RA2;
+logic [31:0] Result,ExtImm;
+logic [3:0] RA1, RA2;
 
 //Se crean los muxes que entran a PC 
 MUX_2#32 pcmux(PCPlus4, Result, PCSrc, PCNext);
