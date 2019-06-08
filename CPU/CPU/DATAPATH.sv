@@ -13,14 +13,14 @@ module DATAPATH(  input logic clk, reset,
 					 output logic [3:0] ALUFlags,
 					 output logic [31:0] PC,
 					 input logic [31:0] Instr,
-					 output logic [31:0] ALUResult, WriteData,
+					 output logic [31:0] ALUResult, WriteData, SrcA, SrcB,
 					 input logic [31:0] ReadData		
 						
 				);
 
 
 logic [31:0] PCNext, PCPlus4, PCPlus8;
-logic [31:0] ExtImm, SrcA, SrcB, Result;
+logic [31:0] ExtImm, Result;
 logic [3:0] RA1, RA2;
 
 //Se crean los muxes que entran a PC 
@@ -36,8 +36,8 @@ Program_Counter  pc_module(clk,reset, PCNext,PC);
 		(input logic [WIDTH-1:0] a, b,
 		 output logic [WIDTH-1:0] y);*/
 
-ADDER pc_add1(PC,32'b100,PCplus4);
-ADDER pc_add2(PCplus4,32'b100, PCPlus8);
+ADDER #(32) pc_add1(PC,32'b100,PCplus4);
+ADDER #(32) pc_add2(PCplus4,32'b100, PCPlus8);
 
 
 //Se instancia los muxes de register file y el register file
@@ -47,8 +47,8 @@ ADDER pc_add2(PCplus4,32'b100, PCPlus8);
 	input  selection_i, 
 	output [N-1:0] result);*/
 
-MUX_2  ra1mux(Instr[19:16], 4'b1111, RegSrc[0], RA1);
-MUX_2  ra2mux(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
+MUX_2 #(4) ra1mux(Instr[19:16], 4'b1111, RegSrc[0], RA1);
+MUX_2 #(4) ra2mux(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
 
 //Se instancia el Register file
 /*
@@ -76,7 +76,7 @@ REGISTER_FILE_STRUCTURAL registerfile(clk,reset,RegWrite,RA1,RA2,Instr[15:12],Re
 
 //Se crea mux que está despues del Data memory
 
-MUX_2 #(32) resmux(ALUResult, ReadData, MemtoReg, Result);
+MUX_2 #(32) resmux(ALUResult,ReadData, MemtoReg, Result);
 
 //se instancia le extend 
 
@@ -95,7 +95,7 @@ extend ext(Instr[23:0], ImmSrc, ExtImm);
 	
 //se crea el mux de ScrB
 
-MUX_2 #(32) srcbmux(WriteData, ExtImm, ALUSrc, SrcB);
+MUX_2 #(32) srcbmux(RA2, ExtImm, ALUSrc, SrcB);
 
 //Se instancia la ALU
 

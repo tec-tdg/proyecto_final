@@ -24,10 +24,10 @@ module testbench_TOP_V0();
 		if(MemWrite) begin 
 			if(DataAdr === 100 & WriteData === 7)begin
 			$display("Simulacion correcta");
-			$stop;
+			
 		end else if(DataAdr !== 96) begin
 			$display ("Simulacion fallo");
-         $stop;
+         
 		end
 	end
    end	
