@@ -29,18 +29,20 @@ logic [3:0] ALUFlags_t;
 logic [31:0] PC_t;
 logic [31:0] Instr_t;
 logic [31:0] ALUResult_t, WriteData_t;
-logic [31:0] ReadData_t, SrcA, SrcB;		
+logic [31:0] ReadData_t, SrcA_t, SrcB_t, ExtImm_t;
+logic [3:0]RA1,RA2;	
+	
 						
   
   DATAPATH dut( clk_t, reset_t,RegSrc_t,RegWrite_t,
  ImmSrc_t,ALUSrc_t, ALUControl_t, MemtoReg_t,PCSrc_t,
-  ALUFlags_t, PC_t, Instr_t,ALUResult_t, WriteData_t, SrcA, SrcB,
-ReadData_t);
+  ALUFlags_t, PC_t, Instr_t,ALUResult_t, WriteData_t, SrcA_t, SrcB_t,ExtImm_t,
+ReadData_t,RA1,RA2);
 				  
 	initial begin 
 	//0xE281002A   / 	1110_00_1_0100_0_0000_0000_0000_00101010
 	//ADD R0, R0, #42
-	
+	 //1110 0010 1000 0000 0000 0000 0010 1010
 
 		
 	end
@@ -78,7 +80,7 @@ ReadData_t);
 		0: caso R-R (op = 00 y funct5 = 0− > bit I )
 		1: caso R-I (else)
 		*/
-		assign ALUSrc_t= 0;
+		assign ALUSrc_t= 1;
 		/*0100 : ADD, ALUControl - 00*/
 		assign ALUControl_t= 2'b00;
 		
