@@ -1,19 +1,22 @@
 module DATAPATH_TB();
 
 	/*
-	 input logic clk, reset,
+(  input logic clk, reset,
 					 input logic [1:0] RegSrc,
 					 input logic RegWrite,
 					 input logic [1:0] ImmSrc,
 					 input logic ALUSrc,
 					 input logic [1:0] ALUControl,
 					 input logic MemtoReg,
-                	 input logic PCSrc,
+                input logic PCSrc,
 					 output logic [3:0] ALUFlags,
 					 output logic [31:0] PC,
 					 input logic [31:0] Instr,
 					 output logic [31:0] ALUResult, WriteData,
-					 input logic [31:0] ReadData		
+					 input logic [31:0] ReadData
+					 
+						
+				);		
 						*/
 					 
 				 
@@ -36,8 +39,7 @@ logic [3:0]RA1,RA2;
   
   DATAPATH dut( clk_t, reset_t,RegSrc_t,RegWrite_t,
  ImmSrc_t,ALUSrc_t, ALUControl_t, MemtoReg_t,PCSrc_t,
-  ALUFlags_t, PC_t, Instr_t,ALUResult_t, WriteData_t, SrcA_t, SrcB_t,ExtImm_t,
-ReadData_t,RA1,RA2);
+  ALUFlags_t, PC_t, Instr_t,ALUResult_t, WriteData_t, ReadData_t);
 				  
 	initial begin 
 	//0xE281002A   / 	1110_00_1_0100_0_0000_0000_0000_00101010
