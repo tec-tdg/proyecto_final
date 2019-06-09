@@ -2,8 +2,9 @@ module Condcheck(input logic [3:0] Cond,
 					  input logic [3:0] ALUFlags,
 					  output logic CondEx);
 
-	logic Z, C, N, V, GE; //Zero, Carry, Neg, oVerflow
-	assign {Z, C, N, V} = ALUFlags;
+	logic N,Z,C,V,GE;
+
+	assign {N, Z, C, V} = ALUFlags;
 	assign GE = (N == V);
 
 	always_comb
@@ -16,7 +17,7 @@ module Condcheck(input logic [3:0] Cond,
 			4'b0101: CondEx = ~N; // PL
 			4'b0110: CondEx = V; // VS
 			4'b0111: CondEx = ~V; // VC
-			4'b1000: CondEx = ~Z & C; // HI
+			4'b1000: CondEx = C & ~Z; // HI
 			4'b1001: CondEx = ~(C & ~Z); // LS
 			4'b1010: CondEx = GE; // GE
 			4'b1011: CondEx = ~GE; // LT

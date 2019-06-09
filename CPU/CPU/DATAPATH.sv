@@ -9,7 +9,7 @@ module DATAPATH(  input logic clk, reset,
 					 input logic ALUSrc,
 					 input logic [1:0] ALUControl,
 					 input logic MemtoReg,
-                	 input logic PCSrc,
+                input logic PCSrc,
 					 output logic [3:0] ALUFlags,
 					 output logic [31:0] PC,
 					 input logic [31:0] Instr,
@@ -21,7 +21,7 @@ module DATAPATH(  input logic clk, reset,
 
 
 logic [31:0] PCNext, PCPlus4, PCPlus8;
-logic [31:0] Result,ExtImm;
+logic [31:0] Result,ExtImm,SrcA,SrcB;
 logic [3:0] RA1, RA2;
 
 //Se crean los muxes que entran a PC 
@@ -57,18 +57,14 @@ MUX_2#4 ra2mux(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
 module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 				(  input logic   clk,reset,
 					input logic   WE3,
-					
 					input logic   [N-1:0]  A1,
 					input logic   [N-1:0]  A2,
 					input logic   [N-1:0]  A3,
-					
 					input logic   [M-1:0]  WD3,
-					
 					input logic   [M-1:0]  R15,
-					
-					
 					output logic  [M-1:0] RD1,
 					output logic  [M-1:0] RD2);
+
 
 */
 

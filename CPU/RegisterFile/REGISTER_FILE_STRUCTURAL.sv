@@ -4,16 +4,11 @@
 module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 				(  input logic   clk,reset,
 					input logic   WE3,
-					
 					input logic   [N-1:0]  A1,
 					input logic   [N-1:0]  A2,
 					input logic   [N-1:0]  A3,
-					
 					input logic   [M-1:0]  WD3,
-					
 					input logic   [M-1:0]  R15,
-					
-					
 					output logic  [M-1:0] RD1,
 					output logic  [M-1:0] RD2);
 

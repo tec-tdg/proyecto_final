@@ -30,7 +30,7 @@ module InstructionMemory #(parameter bus=32, parameter memorySize = 1024*4, para
 
 //Chequear que tan conveniente es resetear la memoria.
 
-InstructionMemory imem(PC,clk,reset,Instr);
+InstructionMemory imem(PC,Instr);
 
 /*
 
@@ -42,4 +42,7 @@ module ram#(parameter M = 32)
 */
 
 ram dmem(clk, MemWrite, DataAdr, WriteData, ReadData);
+
+
+
 endmodule 

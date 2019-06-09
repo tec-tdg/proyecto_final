@@ -8,13 +8,13 @@ module testbench_TOP_V0();
 	// initialize test
 	initial
 	begin
-	reset <= 1; # 22; reset <= 0;
+	reset <= 1; # 5; reset <= 0;
 	end
 	// generate clock to sequence tests
 	always
 	begin
 	
-	clk <= 1; # 5; clk <= 0; # 5;
+	clk <= 1; # 50; clk <= 0; # 50;
 	
 	//Se chequea que 7 se escribio en la direccion 0x64
 	//al final del programa
