@@ -1,32 +1,19 @@
 //Tomado del libro HDL Example 5.6 RAM
 
 //Evoluciona a 387 del libro de texto
-module REGISTER_FILE#(parameter N = 4,parameter M = 32)
-				(  input logic   clk,
-					input logic   WE3,
-					
-					input reg   [N-1:0]  A1,
-					input reg   [N-1:0]  A2,
-					input reg   [N-1:0]  A3,
-					
-					input logic   [M-1:0]  WD3,
-					
-					input logic   [M-1:0]  R15,
-					
-					
-					output reg  [M-1:0] RD1,
-					output reg  [M-1:0] RD2);
-				
-		logic [M-1:0] mem [2**N-1:0];// 2**N palabras de M bits
-		
-		always_ff @(posedge clk)
-		  
-		
-			if (WE3) mem [A3] <= WD3; //Escritura habilitada de forma sincrónica
-			
-		assign RD1 = mem[A1];//La lectura simepre ocurre de forma inmediata
-		assign RD2 = mem[A2];//La lectura simepre ocurre de forma inmediata
-		
-		  
-		
+module REGISTER_FILE(input logic clk,
+input logic we3,
+input logic [3:0] ra1, ra2, wa3,
+input logic [31:0] wd3, r15,
+output logic [31:0] rd1, rd2);
+logic [31:0] rf[14:0];
+// three ported register file
+// read two ports combinationally
+// write third port on rising edge of clock
+// register 15 reads PC + 8 instead
+always_ff @(posedge clk)
+if (we3) rf[wa3] <= wd3;
+assign rd1 = (ra1 == 4'b1111) ? r15 : rf[ra1];
+assign rd2 = (ra2 == 4'b1111) ? r15 : rf[ra2];
 endmodule
+

@@ -68,6 +68,8 @@ module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 
 */
 
+/*Se testea con regfile del libro*/
+
 REGISTER_FILE_STRUCTURAL registerfile(clk,reset,RegWrite,RA1,RA2,Instr[15:12],Result, PCPlus8,SrcA, WriteData);
 
 

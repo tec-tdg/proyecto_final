@@ -32,7 +32,9 @@ module ControlUnit (input logic clk, reset,
 //	output logic PCS, RegW, MemW,
 //	output logic MemtoReg, ALUSrc,
 //	output logic [1:0] ImmSrc, RegSrc, ALUControl);
-	Decoder dec(Instr[27:26], Instr[25:20], Instr[15:12], FlagW, PCS, RegW, MemW,MemtoReg,ALUSrc , ImmSrc, RegSrc, ALUControl);
+	Decoder dec(Instr[27:26], Instr[25:20], Instr[15:12], 
+		FlagW, PCS, RegW, MemW,
+		MemtoReg,ALUSrc , ImmSrc, RegSrc, ALUControl);
 
 	
 //module Condlogic(input logic clk, reset,
@@ -53,6 +55,8 @@ module ControlUnit (input logic clk, reset,
 //	input logic PCS, RegW, MemW,
 //	output logic PCSrc, RegWrite, MemWrite);
 
-Condlogic condo(clk, reset, Instr[31:28], ALUFlags, FlagW, PCS, RegW, MemW, PCSrc, RegWrite, MemWrite);		  
+Condlogic condo(clk, reset, Instr[31:28], ALUFlags,
+ FlagW, PCS, RegW, MemW, 
+ PCSrc, RegWrite, MemWrite);		  
 
 endmodule
