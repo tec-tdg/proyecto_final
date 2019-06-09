@@ -25,7 +25,7 @@ logic [31:0] Result,ExtImm,SrcA,SrcB;
 logic [3:0] RA1, RA2;
 
 //Se crean los muxes que entran a PC 
-MUX_2#32 pcmux(PCPlus4, Result, PCSrc, PCNext);
+MUX_2 #(32) pcmux(PCPlus4, Result, PCSrc, PCNext);
 //Se conecta este mux con el modulo de PC
 //Program_Counter (clk_input, reset_input,pc_prima_input,pc_output);
 
@@ -48,8 +48,8 @@ ADDER_32 pc_add2(PCPlus4,32'b00000000000000000000000000000100, PCPlus8);
 	input  selection_i, 
 	output [N-1:0] result);*/
 
-MUX_2#4 ra1mux(Instr[19:16], 4'b1111, RegSrc[0], RA1);
-MUX_2#4 ra2mux(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
+MUX_2 #(4) ra1mux(Instr[19:16], 4'b1111, RegSrc[0], RA1);
+MUX_2 #(4) ra2mux(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
 
 //Se instancia el Register file
 /*
@@ -75,7 +75,7 @@ REGISTER_FILE_STRUCTURAL registerfile(clk,reset,RegWrite,RA1,RA2,Instr[15:12],Re
 
 //Se crea mux que está despues del Data memory
 
-MUX_2#32 resmux(ALUResult,ReadData, MemtoReg, Result);
+MUX_2 #(32) resmux(ALUResult,ReadData, MemtoReg, Result);
 
 //se instancia le extend 
 
@@ -94,7 +94,7 @@ extend ext(Instr[23:0], ImmSrc, ExtImm);
 	
 //se crea el mux de ScrB
 
-MUX_2#32 srcbmux(WriteData, ExtImm, ALUSrc, SrcB);
+MUX_2 #(32) srcbmux(WriteData, ExtImm, ALUSrc, SrcB);
 
 
 /*
@@ -107,5 +107,5 @@ ALU #(parameter N=1) (
 
 */
 
-ALU#32 alu(SrcA, SrcB, {2'b00,ALUControl}, ALUResult, ALUFlags);
+ALU #(32) alu(SrcA, SrcB, {2'b00,ALUControl}, ALUResult, ALUFlags);
 endmodule
