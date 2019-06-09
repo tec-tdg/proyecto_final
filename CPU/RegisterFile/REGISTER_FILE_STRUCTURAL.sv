@@ -47,7 +47,7 @@ assign WER14 = WE3 & (A3 == 4'b1110);
 
 
 //Verificar escritura de R15 en cada ciclo
-assign WER15= WE3 & (A3 == 4'b1111);   
+assign WER15 = WE3 & (A3 == 4'b1111);   
 
 //Se instancian los registros
 //module REGISTER(parameter M = 32)(  input logic   clk,input logic   WE,
