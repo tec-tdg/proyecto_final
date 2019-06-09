@@ -15,7 +15,7 @@ module Condlogic(input logic clk, reset,
 
 	FlipFlopen #(2)flagflop1(clk, reset, FlagWrite[1], ALUFlags[3:2], Flags[3:2]);
 
-	FlipFlopen #(2)flagflop20(clk, reset, FlagWrite[0], ALUFlags[1:0], Flags[1:0]);
+	FlipFlopen #(2)flagflop2(clk, reset, FlagWrite[0], ALUFlags[1:0], Flags[1:0]);
 
 	// write controls are conditional
 	Condcheck cc(Cond, Flags, CondEx);

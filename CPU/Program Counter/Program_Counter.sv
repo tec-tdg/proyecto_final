@@ -9,7 +9,7 @@ module Program_Counter( input  logic clk,
 								output logic [31:0] pc);
 	
 		
-		always @(negedge clk, posedge reset) begin 
+		always @(posedge clk, posedge reset) begin 
 			if(reset) pc = 32'b0;
 			else pc <= pc_prima;
 		end
