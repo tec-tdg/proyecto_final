@@ -43,11 +43,29 @@ assign WER10 = WE3 & (A3 == 4'b1010);
 assign WER11 = WE3 & (A3 == 4'b1011);
 assign WER12 = WE3 & (A3 == 4'b1100);  
 assign WER13 = WE3 & (A3 == 4'b1101);
-assign WER14 = WE3 & (A3 == 4'b1110);  
+assign WER14 = WE3 & (A3 == 4'b1110); 
+
+
+
+//Selector del mux de R15
+
+assign WER15 = WE3 & (A3 == 4'b1111);   
+
 
 
 //Verificar escritura de R15 en cada ciclo
-assign WER15 = WE3 & (A3 == 4'b1111);   
+
+//Logic Especial para R15
+logic [M-1:0] RE15_mux_out;
+
+
+//Se crea MUX de 2 enntradas para R15
+/*module MUX_2 #(parameter N=4) (
+	input [N-1:0] a, b, 
+	input  selection_i, 
+	output [N-1:0] result);*/
+MUX_2 #(32) muxr15(R15,WD3,WER15,RE15_mux_out);
+
 
 //Se instancian los registros
 //module REGISTER(parameter M = 32)(  input logic   clk,input logic   WE,
@@ -81,7 +99,9 @@ logic [31:0] RDR0,RDR1,RDR2,RDR3,RDR4,RDR5,RDR6,RDR7,RDR8,RDR9,RDR10,RDR11,RDR12
  REGISTER R12(clk,reset,WER12,WD3,RDR12);
  REGISTER R13(clk,reset,WER13,WD3,RDR13);
  REGISTER R14(clk,reset,WER14,WD3,RDR14);
- REGISTER Registro15(clk,reset,WER15,R15,RDR15);
+ 
+ 
+ REGISTER Registro15(clk,reset,1'b1,RE15_mux_out,RDR15);
  
  	
 

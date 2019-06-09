@@ -42,10 +42,10 @@ logic [3:0]RA1,RA2;
   ALUFlags_t, PC_t, Instr_t,ALUResult_t, WriteData_t, ReadData_t);
 				  
 	initial begin 
-	assign Instr_t = 32'b1110_00_1_0100_0_0000_0000_0000_00101010;
-	//0xE281002A   / 	1110_00_1_0100_0_0000_0000_0000_00101010
-	//ADD R0, R0, #42
-	 //1110 0010 1000 0000 0000 0000 0010 1010
+	assign Instr_t = 32'b1110_0010_1000_1111_0000_0000_0000_0000;
+
+	//ADD R0, R15, #0
+
 
 		
 	end

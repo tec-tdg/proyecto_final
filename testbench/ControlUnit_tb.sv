@@ -28,10 +28,13 @@ module ControlUnit_tb();
   
   initial begin
     assign reset = 0;
+	 #10
+	 assign reset = 1;
+	 
     //ADD R0, R0, #42
-    assign Instru =32'b	1110_00_1_0100_0_0000_0000_0000_00101010;
-    #100
-    assign reset = 1;
+    assign Instru =32'b	1110_000_0010_0_1111_0000_0000_0000_1111;
+    #10
+    assign reset = 0;
   end
   
   ControlUnit dut(
@@ -46,4 +49,6 @@ module ControlUnit_tb();
               ALUControl,
               MemWrite,MemtoReg,
               PCSrc	);
+				  
+	always #10 clk = ~clk;			  
 endmodule
