@@ -25,8 +25,8 @@ module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 
 //Se crean los enable de los registros		  
 		
-logic WER1 ,WER2 ,WER3 ,WER4 ,WER5 ,WER6 ,WER7,WER8 ,
-		WER9 ,WER10 ,WER11 ,WER12 ,WER13,WER14 ,WER15 ;		
+logic   WER0, WER1, WER2, WER3, WER4, WER5, WER6, WER7, WER8,
+		WER9, WER10, WER11, WER12, WER13, WER14, WER15 ;		
 		
 //Se asignan los Wright enable 
 assign WER0  = WE3 & (A3 == 4'b0000);
