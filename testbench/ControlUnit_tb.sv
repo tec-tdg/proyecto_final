@@ -54,7 +54,7 @@ RegWrite). Afectado por ejecucion condicional
     ControlUnit dut(
               clk,
               reset,
-    					Instru[31:12],
+    			Instru[31:12],
               ALUFlags,
               RegSrc,
               RegWrite,
@@ -65,17 +65,17 @@ RegWrite). Afectado por ejecucion condicional
               PCSrc	);
   
   initial begin
-	assign ALUFlags = 4'b0000;
-   assign  reset = 0; 
+	//assign ALUFlags = 4'b0000;
+     reset = 0; 
     #10
-     assign reset = 1;
+      reset = 1;
     #10
-     assign reset = 0;
+      reset = 0;
     //ADD R0, R0, #42
     //Instrucciones a probar
     
     //E04F000F
-     assign Instru =32'b1110_000_0010_0_1111_0000_0000_0000_1111; #100;
+      Instru =32'b1110_000_0010_0_1111_0000_0000_0000_1111; #100;
     $display("Valindando: E04F000F");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -90,7 +90,7 @@ RegWrite). Afectado por ejecucion condicional
 
     
     //E2802005
-    assign Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0101; #100;  
+     Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0101; #100;  
 	 $display("Valindando: E2802005");
     
 	assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -104,7 +104,7 @@ RegWrite). Afectado por ejecucion condicional
   
    //E280300C
 	
-   assign Instru =32'b1110_001_0100_0_0000_0011_0000_0000_1100; #100;
+    Instru =32'b1110_001_0100_0_0000_0011_0000_0000_1100; #100;
 	$display("Valindando: E280300C");
 	assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
    assert(RegWrite == 1'b1) $display("	Instruction/RegWrite"); else $error("	ERROR Instruction/RegWrite");
@@ -118,7 +118,7 @@ RegWrite). Afectado por ejecucion condicional
   
       
   //E2437009
-   assign Instru =32'b1110_001_0010_0_0011_0111_0000_0000_1001; #100;  
+    Instru =32'b1110_001_0010_0_0011_0111_0000_0000_1001; #100;  
    $display("Valindando: E2437009");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -131,7 +131,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
      
   //E1874002
-   assign Instru =32'b1110_000_1100_0_0111_0100_0000_0000_0010; #100;  
+    Instru =32'b1110_000_1100_0_0111_0100_0000_0000_0010; #100;  
     $display("Valindando: E1874002");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -144,7 +144,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
      
   //E0035004
-   assign Instru =32'b1110_000_0000_0_0011_01010000_0000_0100; #100;  
+    Instru =32'b1110_000_0000_0_0011_01010000_0000_0100; #100;  
     $display("Valindando: E0035004");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -157,7 +157,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
 
   //E0855004
-    assign Instru =32'b1110_000_0100_0_0101_0101_0000_0000_0100; #100;  
+     Instru =32'b1110_000_0100_0_0101_0101_0000_0000_0100; #100;  
     $display("Valindando: E0855004");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -170,7 +170,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
      //E0558007
-	 assign Instru =32'b1110_000_0010_1_0101_1000_0000_0000_0111; #100;  
+	  Instru =32'b1110_000_0010_1_0101_1000_0000_0000_0111; #100;  
     $display("Valindando: E0558007");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -183,7 +183,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //0A00000C
-   assign Instru =32'b0000_1010_0000_0000_0000_0000_0000_1100; #100;  
+    Instru =32'b0000_1010_0000_0000_0000_0000_0000_1100; #100;  
    $display("Valindando: 0A00000C Posiblemente tenga errores");
     
     assert(RegSrc == 2'b01) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -196,7 +196,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
   
   //E0538004
-   assign Instru =32'b1110_000_0010_1_0011_1000_0000_0000_0100; #100;  
+    Instru =32'b1110_000_0010_1_0011_1000_0000_0000_0100; #100;  
     $display("Valindando: E0538004");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -209,7 +209,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
 
   //AA000000
-   assign Instru =32'b1010_1010_0000_0000_0000_0000_0000_0000; #100;  
+    Instru =32'b1010_1010_0000_0000_0000_0000_0000_0000; #100;  
     $display("Valindando: AA000000");
     
     assert(RegSrc == 2'b01) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -222,7 +222,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b1) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //E2805000
-   assign Instru =32'b1110_001_0100_0_0000_0101_0000_0000_0000; #100;  
+    Instru =32'b1110_001_0100_0_0000_0101_0000_0000_0000; #100;  
      $display("Valindando: E2805000");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -235,7 +235,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //E0578002
-   assign Instru =32'b1110_000_0010_1_0111_1000_0000_0000_0010; #100;  
+    Instru =32'b1110_000_0010_1_0111_1000_0000_0000_0010; #100;  
     $display("Valindando: E0578002");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -248,9 +248,88 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");    
    
   //B2857001
-	assign Instru =32'b1011_001_0100_0_0101_0111_0000_0000_0001;
-	assign ALUFlags = 4'b0100;
-		#100;  
+		
+//	 Instru =32'b0000_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b0001_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b0010_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b0011_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b0100_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b0101_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b0110_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b0111_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b1000_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b1001_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b1010_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+	 Instru =32'b1011_001_0100_0_0101_0111_0000_0000_0001;
+	 ALUFlags = 4'b1000;
+	 		#100
+//	 Instru =32'b1100_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b1101_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b1110_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 		#10
+//	 Instru =32'b1111_001_0100_0_0101_0111_0000_0000_0001;
+//	 ALUFlags = 4'b1000;
+//	 #10
+//	 ALUFlags = 4'b0000;
+//		#10;
+//	 ALUFlags = 4'b0001;
+//		#10;
+//	 ALUFlags = 4'b0010;
+//		#10;
+//	 ALUFlags = 4'b0011;
+//		#10;
+//	 ALUFlags = 4'b0100;
+//		#10;
+//	 ALUFlags = 4'b0101;
+//		#10;
+//	 ALUFlags = 4'b0110;
+//		#10;
+//	 ALUFlags = 4'b0111;
+//		#10;
+//	 ALUFlags = 4'b1000;
+//		#10;
+//	 ALUFlags = 4'b1001;
+//		#10;
+//	 ALUFlags = 4'b1010;
+//		#10;
+//	 ALUFlags = 4'b1011;
+//		#10;
+//	 ALUFlags = 4'b1100;
+//		#10;
+//	 ALUFlags = 4'b1101;
+//		#10;
+//	 ALUFlags = 4'b1110;
+//		#10;
+//	 ALUFlags = 4'b1111;
+//		#10;
+
     $display("Valindando: B2857001");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -263,8 +342,8 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //E0477002
-   assign Instru =32'b1110_000_0010_0_0111_0111_0000_0000_0010;
-   assign ALUFlags = 4'b0000;	#100;  
+    Instru =32'b1110_000_0010_0_0111_0111_0000_0000_0010;
+    ALUFlags = 4'b0000;	#100;  
    $display("Valindando: E0477002");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -277,7 +356,7 @@ RegWrite). Afectado por ejecucion condicional
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //E5837054
-   assign Instru =32'b1110_010_1100_0_0011_0111_0000_0101_0100; #100; 
+    Instru =32'b1110_010_1100_0_0011_0111_0000_0101_0100; #100; 
 $display("Valindando: E5837054");
     
     assert(RegSrc == 2'b10) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -291,7 +370,7 @@ $display("Valindando: E5837054");
    
     
   //E5902060
-   assign Instru =32'b1110_010_1100_1_0000_0010_0000_0110_0000; #100;  
+    Instru =32'b1110_010_1100_1_0000_0010_0000_0110_0000; #100;  
     $display("Valindando: E5902060");
     
        
@@ -305,7 +384,7 @@ $display("Valindando: E5837054");
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
       //E08FF000
-   assign Instru =32'b1110_000_0100_0_1111_1111_0000_0000_0000; #100;  
+    Instru =32'b1110_000_0100_0_1111_1111_0000_0000_0000; #100;  
        $display("Valindando: E08FF000");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -318,7 +397,7 @@ $display("Valindando: E5837054");
     assert(PCSrc == 1'b1) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //E280200E
-   assign Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0001; #100;  
+    Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0001; #100;  
        $display("Valindando: E280200E");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -331,7 +410,7 @@ $display("Valindando: E5837054");
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //EA000001
-   assign Instru =32'b1110_1010_0000_0000_0000_0000_0000_0001; #100;  
+    Instru =32'b1110_1010_0000_0000_0000_0000_0000_0001; #100;  
        $display("Valindando: EA000001");
     
     assert(RegSrc == 2'b01) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -345,7 +424,7 @@ $display("Valindando: E5837054");
     
     
   //E280200D
-   assign Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0001; #100;  
+    Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0001; #100;  
 	  $display("Valindando: E280200D");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -359,7 +438,7 @@ $display("Valindando: E5837054");
    
     
   //E280200A
-   assign Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0001; #100;  
+    Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0001; #100;  
     $display("Valindando: E280200A");
     
     assert(RegSrc == 2'b00) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -372,7 +451,7 @@ $display("Valindando: E5837054");
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //E5802064
-   assign Instru =32'b1110_010_1100_0_0000_0010_0000_0101_0100; #100;  
+    Instru =32'b1110_010_1100_0_0000_0010_0000_0101_0100; #100;  
      $display("Valindando: E5802064");
     
     assert(RegSrc == 2'b10) $display("	Instruction/RegSrc"); else $error("	ERROR Instruction/RegSrc");
@@ -383,6 +462,9 @@ $display("Valindando: E5837054");
     assert(MemWrite == 1'b1) $display("	Instruction/MemWrite"); else $error("	ERROR Instruction/MemWrite");
     assert(MemtoReg == 1'b1) $display("	Instruction/MemtoReg"); else $error("	ERROR Instruction/MemtoReg");
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
+	 
+	//Instrucciones Nuestras
+	// 
     
   end
   
