@@ -4,7 +4,7 @@ module Condcheck(input logic [3:0] Cond,
 
 	logic N,Z,C,V,GE;
 
-	assign {N, Z, C, V} = ALUFlags;
+	assign {C, N, V, Z} = ALUFlags;
 	assign GE = (N == V);
 
 	always_comb
