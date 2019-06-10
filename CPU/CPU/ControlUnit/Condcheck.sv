@@ -2,11 +2,11 @@ module Condcheck(input logic [3:0] Cond,
 					  input logic [3:0] ALUFlags,
 					  output logic CondEx);
 
-	logic N = 0;
-	logic Z = 0;
-	logic C = 0;
-	logic V = 0;
-	logic GE = 0;
+	//logic N = 0;
+	//logic Z = 0;
+	//logic C = 0;
+	//logic V = 0;
+	//logic GE = 0;
 
 
 	assign {C, N, V, Z} = ALUFlags;
