@@ -55,7 +55,7 @@
 				FlagW = 2'b00; // don't update Flags
 			end
 			logic[6:0] caseCond;
-			assign caseCond = {ALUOp, Funct};
+			assign caseCond = {controls[0], Funct};
 			
 			always @(*) begin
 		casex (caseCond) 
