@@ -13,14 +13,6 @@ module REGISTER_FILE_STRUCTURAL #(parameter N = 4,parameter M = 32)
 					output logic  [M-1:0] RD2);
 
 
-// Se instancia el DECODER
-
-//DECODER(input logic [3:0] address, output logic [15:0] outputdata);
-
-//logic [15:0]decoder_output;
-//
-//DECODER decoder(A3,decoder_output);
-
 
 
 //Se crean los enable de los registros		  
