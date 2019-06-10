@@ -315,7 +315,7 @@ $display("Valindando: E5837054");
     assert(ALUControl == 2'b00) $display("	Instruction/ALUControl"); else $error("	ERROR Instruction/ALUControl");
     assert(MemWrite == 1'b0) $display("	Instruction/MemWrite"); else $error("	ERROR Instruction/MemWrite");
     assert(MemtoReg == 1'b0) $display("	Instruction/MemtoReg"); else $error("	ERROR Instruction/MemtoReg");
-    assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
+    assert(PCSrc == 1'b1) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   //E280200E
    assign Instru =32'b1110_001_0100_0_0000_0010_0000_0000_0001; #100;  
@@ -381,7 +381,7 @@ $display("Valindando: E5837054");
     assert(ALUSrc == 1'b1) $display("	Instruction/ALUSrc"); else $error("	ERROR Instruction/ALUSrc");
     assert(ALUControl == 2'b00) $display("	Instruction/ALUControl"); else $error("	ERROR Instruction/ALUControl");
     assert(MemWrite == 1'b1) $display("	Instruction/MemWrite"); else $error("	ERROR Instruction/MemWrite");
-    assert(MemtoReg == 1'b0) $display("	Instruction/MemtoReg"); else $error("	ERROR Instruction/MemtoReg");
+    assert(MemtoReg == 1'b1) $display("	Instruction/MemtoReg"); else $error("	ERROR Instruction/MemtoReg");
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");
     
   end
