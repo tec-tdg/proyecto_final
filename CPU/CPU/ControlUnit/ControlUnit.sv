@@ -15,7 +15,7 @@ module ControlUnit (input logic clk, reset,
 	
 
 /*
-	module Decoder (input logic [1:0] Op,
+	module CUDecoder (input logic [1:0] Op,
 					 input logic [5:0] Funct,
 					 input logic [3:0] Rd,
 					 output logic [1:0] FlagW,
@@ -30,7 +30,7 @@ module ControlUnit (input logic clk, reset,
 					 );*/
 
 
-	Decoder dec(Instr[27:26], Instr[25:20], Instr[15:12], 
+	CUDecoder dec(Instr[27:26], Instr[25:20], Instr[15:12], 
 		FlagW, PCS, RegW, MemW,
 		MemtoReg, ALUSrc, ImmSrc, RegSrc, ALUControl, NoWrite);
 

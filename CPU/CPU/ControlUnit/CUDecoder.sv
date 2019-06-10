@@ -1,4 +1,4 @@
-	module Decoder (input logic [1:0] Op,
+	module CUDecoder (input logic [1:0] Op,
 					 input logic [5:0] Funct,
 					 input logic [3:0] Rd,
 					 output logic [1:0] FlagW,
