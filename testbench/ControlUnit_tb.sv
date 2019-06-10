@@ -285,8 +285,8 @@ $display("Valindando: E5837054");
     assert(ImmSrc == 2'b01) $display("	Instruction/ImmSrc"); else $error("	ERROR Instruction/ImmSrc");
     assert(ALUSrc == 1'b1) $display("	Instruction/ALUSrc"); else $error("	ERROR Instruction/ALUSrc");
     assert(ALUControl == 2'b00) $display("	Instruction/ALUControl"); else $error("	ERROR Instruction/ALUControl");
-    assert(MemWrite == 1'b0) $display("	Instruction/MemWrite"); else $error("	ERROR Instruction/MemWrite");
-    assert(MemtoReg == 1'b0) $display("	Instruction/MemtoReg"); else $error("	ERROR Instruction/MemtoReg");
+    assert(MemWrite == 1'b1) $display("	Instruction/MemWrite"); else $error("	ERROR Instruction/MemWrite");
+    assert(MemtoReg == 1'b1) $display("	Instruction/MemtoReg"); else $error("	ERROR Instruction/MemtoReg");
     assert(PCSrc == 1'b0) $display("	Instruction/PCSrc"); else $error("	ERROR Instruction/PCSrc");	
    
     
