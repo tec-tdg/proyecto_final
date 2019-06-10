@@ -27,11 +27,19 @@
 					else controls = 10'b10_01_1_1_0_1_0_0;
 		// B
 			2'b10: controls = 10'b01_10_1_0_0_0_1_0;
-		// Unimplemented
-			default: controls = 10'b1;
+			default: controls = 10'bx;
 		endcase
 		
-	assign {RegSrc, ImmSrc,ALUSrc,MemtoReg,RegW,MemW,Branch, ALUOp} = controls;
+	assign ALUOp = controls[0];
+	assign Branch = controls[1];
+	assign MemW	= controls[2];
+	assign RegW = controls[3];
+	assign MemtoReg = controls[4];
+	assign ALUSrc = controls[5];
+	assign ImmSrc = controls[7:6];
+	assign RegSrc = controls[9:8];
+	
+	//assign {RegSrc, ImmSrc,ALUSrc,MemtoReg,RegW,MemW,Branch, ALUOp} = controls;
 	
 	// ALU Decoder
 	always_comb
@@ -54,8 +62,9 @@
 				ALUControl = 2'b00; // add for non-DP instructions
 				FlagW = 2'b00; // don't update Flags
 			end
+			
 			logic[6:0] caseCond;
-			assign caseCond = {controls[0], Funct};
+			assign caseCond = {ALUOp, Funct};
 			
 			always @(*) begin
 		casex (caseCond) 

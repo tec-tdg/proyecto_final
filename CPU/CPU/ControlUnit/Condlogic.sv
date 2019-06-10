@@ -22,10 +22,10 @@ module Condlogic(input logic clk, reset,
 	Condcheck cc(Cond, Flags, CondEx);
 	
 	// Logic gates assigment
-	assign FlagWrite = FlagW && {2{CondEx}};
-	assign RegWrite = RegW && CondEx && ~NoWrite;
-	assign MemWrite = MemW && CondEx;
-	assign PCSrc = PCS && CondEx;
+	assign FlagWrite = FlagW & {2{CondEx}};
+	assign RegWrite = RegW & CondEx & ~NoWrite;
+	assign MemWrite = MemW & CondEx;
+	assign PCSrc = PCS & CondEx;
 endmodule
 
 
