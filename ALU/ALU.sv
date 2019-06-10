@@ -22,7 +22,6 @@ module ALU #(parameter N=1) (
 	
 	logic[N-1:0] 
 	function0, /*Adder*/
-	
 	function2, /*AND*/
 	function3, /*OR*/
 	function4, /*NOT*/
