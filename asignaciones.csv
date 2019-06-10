@@ -1,0 +1,62 @@
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+
+# Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+# File: C:\Users\user\Documents\GitHub\proyecto_final\asignaciones.csv
+# Generated on: Mon Jun 10 13:43:45 2019
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Transceiver Analog Settings Protocol,VCCR_GXB/VCCT_GXB Voltage,Transceiver I/O Pin Termination,Transceiver Dedicated Refclk Pin Termination,Transmitter Common Mode Driver Voltage,Transmitter Slew Rate Control,Transmitter Differential Output Voltage,Receiver Buffer Common Mode Voltage,Strict Preservation
+blank_b_outt,Output,PIN_F10,8A,B8A_N0,PIN_F10,2.5 V,,,,,,,,,,,,,
+bluee[7],Output,PIN_J14,8A,B8A_N0,PIN_J14,2.5 V,,,,,,,,,,,,,
+bluee[6],Output,PIN_G15,8A,B8A_N0,PIN_G15,2.5 V,,,,,,,,,,,,,
+bluee[5],Output,PIN_F15,8A,B8A_N0,PIN_F15,2.5 V,,,,,,,,,,,,,
+bluee[4],Output,PIN_H14,8A,B8A_N0,PIN_H14,2.5 V,,,,,,,,,,,,,
+bluee[3],Output,PIN_F14,8A,B8A_N0,PIN_F14,2.5 V,,,,,,,,,,,,,
+bluee[2],Output,PIN_H13,8A,B8A_N0,PIN_H13,2.5 V,,,,,,,,,,,,,
+bluee[1],Output,PIN_G13,8A,B8A_N0,PIN_G13,2.5 V,,,,,,,,,,,,,
+bluee[0],Output,PIN_B13,8A,B8A_N0,PIN_B13,2.5 V,,,,,,,,,,,,,
+clk,Input,PIN_AF14,3B,B3B_N0,PIN_AF14,2.5 V,,,,,,,,,,,,,
+clk_outt,Output,PIN_A11,8A,B8A_N0,PIN_A11,2.5 V,,,,,,,,,,,,,
+greenn[7],Output,PIN_E11,8A,B8A_N0,PIN_E11,2.5 V,,,,,,,,,,,,,
+greenn[6],Output,PIN_F11,8A,B8A_N0,PIN_F11,2.5 V,,,,,,,,,,,,,
+greenn[5],Output,PIN_G12,8A,B8A_N0,PIN_G12,2.5 V,,,,,,,,,,,,,
+greenn[4],Output,PIN_G11,8A,B8A_N0,PIN_G11,2.5 V,,,,,,,,,,,,,
+greenn[3],Output,PIN_G10,8A,B8A_N0,PIN_G10,2.5 V,,,,,,,,,,,,,
+greenn[2],Output,PIN_H12,8A,B8A_N0,PIN_H12,2.5 V,,,,,,,,,,,,,
+greenn[1],Output,PIN_J10,8A,B8A_N0,PIN_J10,2.5 V,,,,,,,,,,,,,
+greenn[0],Output,PIN_J9,8A,B8A_N0,PIN_J9,2.5 V,,,,,,,,,,,,,
+hsync_outt,Output,PIN_B11,8A,B8A_N0,PIN_B11,2.5 V,,,,,,,,,,,,,
+ps2cc,Input,PIN_AD7,3A,B3A_N0,PIN_AD7,2.5 V,,,,,,,,,,,,,
+ps2dd,Input,PIN_AE7,3A,B3A_N0,PIN_AE7,2.5 V,,,,,,,,,,,,,
+redd[7],Output,PIN_F13,8A,B8A_N0,PIN_F13,2.5 V,,,,,,,,,,,,,
+redd[6],Output,PIN_E12,8A,B8A_N0,PIN_E12,2.5 V,,,,,,,,,,,,,
+redd[5],Output,PIN_D12,8A,B8A_N0,PIN_D12,2.5 V,,,,,,,,,,,,,
+redd[4],Output,PIN_C12,8A,B8A_N0,PIN_C12,2.5 V,,,,,,,,,,,,,
+redd[3],Output,PIN_B12,8A,B8A_N0,PIN_B12,2.5 V,,,,,,,,,,,,,
+redd[2],Output,PIN_E13,8A,B8A_N0,PIN_E13,2.5 V,,,,,,,,,,,,,
+redd[1],Output,PIN_C13,8A,B8A_N0,PIN_C13,2.5 V,,,,,,,,,,,,,
+redd[0],Output,PIN_A13,8A,B8A_N0,PIN_A13,2.5 V,,,,,,,,,,,,,
+reset,Input,PIN_AE12,3A,B3A_N0,PIN_AE12,2.5 V,,,,,,,,,,,,,
+rx_dataa[7],Output,PIN_W20,5A,B5A_N0,PIN_W20,2.5 V,,,,,,,,,,,,,
+rx_dataa[6],Output,PIN_Y19,4A,B4A_N0,PIN_Y19,2.5 V,,,,,,,,,,,,,
+rx_dataa[5],Output,PIN_W19,4A,B4A_N0,PIN_W19,2.5 V,,,,,,,,,,,,,
+rx_dataa[4],Output,PIN_W17,4A,B4A_N0,PIN_W17,2.5 V,,,,,,,,,,,,,
+rx_dataa[3],Output,PIN_V18,4A,B4A_N0,PIN_V18,2.5 V,,,,,,,,,,,,,
+rx_dataa[2],Output,PIN_V17,4A,B4A_N0,PIN_V17,2.5 V,,,,,,,,,,,,,
+rx_dataa[1],Output,PIN_W16,4A,B4A_N0,PIN_W16,2.5 V,,,,,,,,,,,,,
+rx_dataa[0],Output,PIN_V16,4A,B4A_N0,PIN_V16,2.5 V,,,,,,,,,,,,,
+sync_b_outt,Output,PIN_C10,8A,B8A_N0,PIN_C10,2.5 V,,,,,,,,,,,,,
+vsync_outt,Output,PIN_D11,8A,B8A_N0,PIN_D11,2.5 V,,,,,,,,,,,,,
