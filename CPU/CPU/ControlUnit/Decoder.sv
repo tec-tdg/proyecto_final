@@ -17,15 +17,15 @@
 	always_comb
 		casex(Op)
 		// Data-processing immediate
-			2'b00: if (Funct[5]) controls = 10'b0000101001;
+			2'b00: if (Funct[5]) controls = 10'b00_00_1_0_1_0_0_1;
 		// Data-processing register
-					else controls = 10'b0000001001;
+					else controls = 10'b00_00_0_0_1_0_0_1;
 		// LDR
-			2'b01: if (Funct[0]) controls = 10'b0001111000;
+			2'b01: if (Funct[0]) controls = 10'b00_01_1_1_1_0_0_0;
 		// STR
-					else controls = 10'b1001110100;
+					else controls = 10'b10_01_1_1_0_1_0_0;
 		// B
-			2'b10: controls = 10'b0110100010;
+			2'b10: controls = 10'b01_10_1_0_0_0_1_0;
 		// Unimplemented
 			default: controls = 10'bx;
 		endcase
