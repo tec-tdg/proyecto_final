@@ -7,10 +7,10 @@ module ALU #(parameter N=1) (
 	logic Ne,V,C,Z;
 	
 	
-	assign output_flags[3]  = C;
-	assign output_flags[2]  = Ne;
-	assign output_flags[1]  = V;
-	assign output_flags[0]  = Z;
+	assign output_flags[3]  = Ne;
+	assign output_flags[2]  = Z;
+	assign output_flags[1]  = C;
+	assign output_flags[0]  = V;
 	
 	//OR con salida que entra XOR que tambien recibe B
 	

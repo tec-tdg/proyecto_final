@@ -249,7 +249,7 @@ RegWrite). Afectado por ejecucion condicional
    
   //B2857001
 	assign Instru =32'b1011_001_0100_0_0101_0111_0000_0000_0001;
-	assign ALUFlags = 4'b1000;
+	assign ALUFlags = 4'b0100;
 		#100;  
     $display("Valindando: B2857001");
     
