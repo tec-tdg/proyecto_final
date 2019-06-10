@@ -14,16 +14,16 @@ module Condlogic(input logic clk, reset,
 	logic [3:0] Flags;
 	logic CondEx;
 
-	FlipFlopen #(2)flagflop1(clk, reset, (FlagW[1] && CondEx)/*FlagWrite[1]*/, ALUFlags[3:2], Flags[3:2]);
+	FlipFlopen #(2)flagflop1(clk, reset, FlagWrite[1], ALUFlags[3:2], Flags[3:2]);
 
-	FlipFlopen #(2)flagflop2(clk, reset, (FlagW[0] && CondEx)/*FlagWrite[0]*/, ALUFlags[1:0], Flags[1:0]);
+	FlipFlopen #(2)flagflop2(clk, reset, FlagWrite[0], ALUFlags[1:0], Flags[1:0]);
 
 	// write controls are conditional
 	Condcheck cc(Cond, Flags, CondEx);
 	
 	// Logic gates assigment
-	//assign FlagWrite = FlagW && {2{CondEx}};
-	assign RegWrite = CondEx;/*RegW && CondEx && ~NoWrite;*/
+	assign FlagWrite = FlagW && {2{CondEx}};
+	assign RegWrite = RegW && CondEx && ~NoWrite;
 	assign MemWrite = MemW && CondEx;
 	assign PCSrc = PCS && CondEx;
 endmodule
