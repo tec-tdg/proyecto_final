@@ -5,10 +5,11 @@
 					 output logic PCS,
 					 output logic RegW,
 					 output logic MemW,
-					 output logic MemtoReg, ALUSrc,
+					 output logic MemtoReg, ALUSrc, 
 					 output logic [1:0] ImmSrc,
 					 output logic [1:0] RegSrc,
-					 output logic [1:0] ALUControl
+					 output logic [1:0] ALUControl,
+					 output logic NoWrite
 					 );
 	
 	logic [9:0] controls;
@@ -27,7 +28,7 @@
 		// B
 			2'b10: controls = 10'b01_10_1_0_0_0_1_0;
 		// Unimplemented
-			default: controls = 10'bx;
+			default: controls = 10'b1;
 		endcase
 		
 	assign {RegSrc, ImmSrc,ALUSrc,MemtoReg,RegW,MemW,Branch, ALUOp} = controls;
@@ -53,6 +54,29 @@
 				ALUControl = 2'b00; // add for non-DP instructions
 				FlagW = 2'b00; // don't update Flags
 			end
+			logic[6:0] caseCond;
+			assign caseCond = {ALUOp, Funct};
+			
+			always @(*) begin
+		casex (caseCond) 
+		  7'b0Xxxxxx :NoWrite <= 0;  // NOT DP
+		  7'b1X01000 :NoWrite <= 0;  // ADD						  
+		  7'b1X01001 :NoWrite <= 0;  // ADD						  
+		  7'b1X00100 :NoWrite <= 0;  // SUB		  
+		  7'b1X00101 :NoWrite <= 0;  // SUB						  
+		  7'b1X00000 :NoWrite <= 0;  // AND						  
+		  7'b1X00001 :NoWrite <= 0;  // AND						  
+		  7'b1X11000 :NoWrite <= 0;  // ORR						  
+		  7'b1X11001 :NoWrite <= 0;  // ORR						  
+		  7'b1X10101 :NoWrite <= 1;  // CMP						  
+		  7'b1X00010 :NoWrite <= 0;  // XOR						  
+		  7'b1011010 :NoWrite <= 0;  // LSR						  
+		  7'b1111010 :NoWrite <= 0;  // MOV pos
+		  7'b1111110 :NoWrite <= 0;  // MOV neg						  
+		  7'b1010010 :NoWrite <= 0;  // B						  
+		  default :NoWrite <= 0;		  
+		endcase
+		end
 	// PC Logic
 	assign PCS = ((Rd == 4'b1111) & RegW) | Branch;
 endmodule

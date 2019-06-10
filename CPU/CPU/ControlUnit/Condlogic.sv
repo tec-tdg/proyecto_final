@@ -5,6 +5,7 @@ module Condlogic(input logic clk, reset,
 					  input logic PCS,
 					  input logic RegW,
 					  input logic MemW,
+					  input logic NoWrite,
 					  output logic PCSrc, 
 					  output logic RegWrite, 
 					  output logic MemWrite);
@@ -21,8 +22,10 @@ module Condlogic(input logic clk, reset,
 	Condcheck cc(Cond, Flags, CondEx);
 	
 	// Logic gates assigment
-	assign FlagWrite = FlagW & {2{CondEx}};
-	assign RegWrite = RegW & CondEx;
-	assign MemWrite = MemW & CondEx;
-	assign PCSrc = PCS & CondEx;
+	assign FlagWrite = FlagW && {2{CondEx}};
+	assign RegWrite = RegW && CondEx;
+	assign MemWrite = MemW && CondEx && ~NoWrite;
+	assign PCSrc = PCS && CondEx;
 endmodule
+
+
